@@ -1,7 +1,9 @@
-print('How are you?')
+import telebot
+from settings import token
+bot =telebot.TeleBot(token)
 
-print('hi')
-
-print('Hello')
-print('hi all')
-print('123')
+@bot.message_handlers(content_types=['text'])
+def get_text_message(message):
+    username = message.from_user.username
+    msg=f'кто здесь.'
+    bot.send_message(message.from_user.id,msg)
